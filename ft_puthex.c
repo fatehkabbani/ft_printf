@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fakabban <fakabban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/09 20:54:02 by fakabban          #+#    #+#             */
-/*   Updated: 2026/11/12 13:44:37 by fakabban         ###   ########.fr       */
+/*   Created: 2026/11/15 15:31:28 by fakabban          #+#    #+#             */
+/*   Updated: 2026/11/15 16:03:23 by fakabban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-unsigned int	 ft_lstsize(t_list *lst)
+int	ft_puthex(unsigned long long n, int upper_case)
 {
-	unsigned int	i;
+	char	*base;
+	int		total_printed;
 
-	i = 0;
-	while (lst != NULL)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
+	base = "0123456789abcdef";
+	if (upper_case)
+		base = "0123456789ABCDEF";
+	total_printed = 0;
+	if (n >= 16)
+		total_printed += ft_puthex(n / 16, upper_case);
+	total_printed += ft_putchar(base[n % 16]);
+	return (total_printed);
 }

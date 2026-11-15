@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fakabban <fakabban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/09 21:06:53 by fakabban          #+#    #+#             */
-/*   Updated: 2026/11/10 11:29:40 by fakabban         ###   ########.fr       */
+/*   Created: 2026/11/15 15:33:05 by fakabban          #+#    #+#             */
+/*   Updated: 2026/11/15 16:03:57 by fakabban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_putnbr(int n)
 {
-	int	i;
-	int	j;
+	long	nb;
+	int		total_printed;
 
-	i = ft_lstsize(lst) - 1;
-	j = 0;
-	while (j < i)
+	nb = n;
+	total_printed = 0;
+	if (nb < 0)
 	{
-		lst = lst->next;
-		j++;
+		total_printed += ft_putchar('-');
+		nb = -nb;
 	}
-	return (lst);
+	if (nb > 9)
+		total_printed += ft_putnbr(nb / 10);
+	total_printed += ft_putchar(nb % 10 + 48);
+	return (total_printed);
 }

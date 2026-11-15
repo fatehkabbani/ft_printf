@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fakabban <fakabban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/03 16:55:20 by fakabban          #+#    #+#             */
-/*   Updated: 2026/11/06 12:00:40 by fakabban         ###   ########.fr       */
+/*   Created: 2026/11/15 15:33:34 by fakabban          #+#    #+#             */
+/*   Updated: 2026/11/15 16:04:06 by fakabban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_putptr(void *p)
 {
-	size_t	i;
+	int	total_printed;
 
-	i = 0;
-	while (i < n)
-	{
-		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
-			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
-		i++;
-	}
-	return (0);
+	if (!p)
+		return (write(1, "(nil)", 5));
+	total_printed = write(1, "0x", 2);
+	total_printed += ft_puthex((unsigned long long)p, 0);
+	return (total_printed);
 }

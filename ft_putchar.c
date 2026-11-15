@@ -6,7 +6,7 @@
 /*   By: fakabban <fakabban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 18:04:53 by fakabban          #+#    #+#             */
-/*   Updated: 2026/11/12 18:49:23 by fakabban         ###   ########.fr       */
+/*   Updated: 2026/11/14 23:20:17 by fakabban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
-	return (2);
+	return (write(1, &c, 1));
 }
